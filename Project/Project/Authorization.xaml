@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Authorization"
+             NavigationPage.HasNavigationBar="False"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False"
+             FlyoutItem.IsVisible="False">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="900"/>
+        </Grid.RowDefinitions>
+        <Label Text="Добро пожаловать на Кухню!" TextColor="#FF7800" FontSize="27" Grid.Row="0" HorizontalTextAlignment="Center" Margin="0,30,0,10"/>
+        <Frame BorderColor="#FF7A00" BackgroundColor="#FFD482" Grid.Row="1" Margin="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Text="Авторизация" FontSize="22" TextColor="Black" Margin="10,10,0,0" Grid.Row="0"/>
+                <Label Text="Почта" Grid.Row="1" FontSize="18" VerticalTextAlignment="Start" Margin="0,20,0,0" TextColor="Black"/>
+                <Frame BackgroundColor="White" BorderColor="Black" Grid.Row="1" Margin="0,60,0,0">
+                    <Entry FontSize="18" TextColor="Black" x:Name="mail"/>
+                </Frame>
+                <Label Text="Пароль" Grid.Row="2" FontSize="18" VerticalTextAlignment="Start" Margin="0,20,0,0" TextColor="Black"/>
+                <Frame BackgroundColor="White" BorderColor="Black" Grid.Row="2" Margin="0,60,0,0">
+                    <Entry FontSize="18" TextColor="Black" IsPassword="True" x:Name="pass"/>
+                </Frame>
+                <Label Text="Роль" Grid.Row="3" FontSize="18" VerticalTextAlignment="Start" Margin="0,20,0,0" TextColor="Black"/>
+                <Frame Grid.Row="3" BackgroundColor="White" Margin="0,60,0,0" BorderColor="Black">
+                    <Picker x:Name="picker" TextColor="Black" FontSize="18">
+                        <Picker.Items>
+                            <x:String>Пользователь</x:String>
+                            <x:String>Модератор</x:String>
+                            <x:String>Администратор</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+                <Label Text="Регистрация" FontSize="15" HorizontalOptions="Start" VerticalOptions="End" TextColor="#9D5500" Grid.Row="4">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="Reg" Tapped="Reg_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                        <Label Text="Забыли пароль" FontSize="15" HorizontalOptions="End" VerticalOptions="End" TextColor="#9D5500" Grid.Row="4"/>
+                <Button BorderColor="Black" BorderWidth="3" Text="Войти" FontSize="20" Grid.Row="5" BackgroundColor="#FFE6A5" TextColor="Black" Margin="40,20,40,0" x:Name="autho" Clicked="autho_Clicked"/>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>

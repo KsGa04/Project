@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.AddCategory"
+             xmlns:pages="clr-namespace:Project">
+  <FlyoutPage.Flyout>
+    <pages:AddCategoryFlyout x:Name="FlyoutPage" />
+  </FlyoutPage.Flyout>
+  <FlyoutPage.Detail>
+        <ContentPage>
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <Style x:Key="buttonStyle" TargetType="Button">
+                        <Setter Property="BackgroundColor" Value="#FFDE89" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="BorderColor" Value="Black"/>
+                        <Setter Property="BorderWidth" Value="2"/>
+                    </Style>
+                    <Style x:Key="frameStyle" TargetType="Frame">
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="VerticalOptions" Value="Center"/>
+                        <Setter Property="BackgroundColor" Value="#D9D9D9"/>
+                        <Setter Property="WidthRequest" Value="400"/>
+                        <Setter Property="BorderColor" Value="Black"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+            <ScrollView BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="350"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Style="{StaticResource frameStyle}" WidthRequest="300">
+                        <Image Grid.Row="0" x:Name="img" HeightRequest="300" WidthRequest="300" Margin="5"/>
+                    </Frame>
+                    <Button x:Name="takePhotoBtn" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Text="Сделать фото" Style="{StaticResource buttonStyle}" Margin="20,0,0,0"/>
+                    <Button x:Name="getPhotoBtn" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Text="Вставить фото" Style="{StaticResource buttonStyle}" Margin="0,0,20,0"/>
+                    <Label Text="Название категории" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="2" Style="{StaticResource frameStyle}">
+                        <Entry />
+                    </Frame>
+                    <Button Text="Сохранить" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource buttonStyle}" WidthRequest="300"/>
+                </Grid>
+            </ScrollView>
+        </ContentPage>
+  </FlyoutPage.Detail>
+</FlyoutPage>

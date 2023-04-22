@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Index"
+       xmlns:local="clr-namespace:Project">
+
+    <ShellItem>
+        <ShellContent ContentTemplate="{DataTemplate local:Authorization}"/>
+    </ShellItem>
+    <FlyoutItem Title="user" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems" >
+        <ShellContent Title="Главная страница" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
+        <ShellContent Title="Личный кабинет" ContentTemplate="{DataTemplate local:PrivateAccount}"/>
+        <ShellContent Title="Каталог блюд" />
+        <ShellContent Title="Мои рецепты" />
+        <ShellContent Title="Выйти" ContentTemplate="{DataTemplate local:Authorization}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="admin" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Добавить категорию" ContentTemplate="{DataTemplate local:AddCategories}" Route="AddCategories"/>
+        <ShellContent Title="Добавить блюдо" ContentTemplate="{DataTemplate local:AddMeals}"/>
+        <ShellContent Title="Добавить модератора" ContentTemplate="{DataTemplate local:AddModerator}"/>
+        <ShellContent Title="Выйти" ContentTemplate="{DataTemplate local:Authorization}"/>
+    </FlyoutItem>
+</Shell>

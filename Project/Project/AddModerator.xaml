@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.AddModerator"
+             xmlns:pages="clr-namespace:Project">
+  <FlyoutPage.Flyout>
+    <pages:AddCategoryFlyout x:Name="FlyoutPage" />
+  </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <ContentPage>
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <Style x:Key="buttonStyle" TargetType="Button">
+                        <Setter Property="BackgroundColor" Value="#FFDE89" />
+                        <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="BorderColor" Value="Black"/>
+                        <Setter Property="BorderWidth" Value="2"/>
+                    </Style>
+                    <Style x:Key="frameStyle" TargetType="Frame">
+                        <Setter Property="HorizontalOptions" Value="Center"/>
+                        <Setter Property="VerticalOptions" Value="Center"/>
+                        <Setter Property="BackgroundColor" Value="#D9D9D9"/>
+                        <Setter Property="WidthRequest" Value="400"/>
+                        <Setter Property="BorderColor" Value="Black"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+            <ScrollView BackgroundColor="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="170"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="Ник-нейм" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="3" Style="{StaticResource frameStyle}">
+                        <Entry />
+                    </Frame>
+                    <Label Text="Дата рождения" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="4" Style="{StaticResource frameStyle}">
+                        <DatePicker Format="D" TextColor="Black">
+                            <DatePicker.MinimumDate>1/01/1970</DatePicker.MinimumDate>
+                            <DatePicker.MaximumDate>1/01/2006</DatePicker.MaximumDate>
+                        </DatePicker>
+                    </Frame>
+                    <Label Text="Почта" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="1" Style="{StaticResource frameStyle}">
+                        <Entry />
+                    </Frame>
+                    <Label Text="Пароль" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="2" Style="{StaticResource frameStyle}">
+                        <Entry IsPassword="True" TextColor="Black"/>
+                    </Frame>
+                    <Label Text="Роль" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+                    <Frame Grid.Row="5" Style="{StaticResource frameStyle}">
+                        <Picker x:Name="picker" TextColor="Black" FontSize="18">
+                            <Picker.Items>
+                                <x:String>Категория1</x:String>
+                                <x:String>Категория2</x:String>
+                                <x:String>Категория3</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                    <Button Text="Сохранить" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource buttonStyle}" WidthRequest="300"/>
+                </Grid>
+            </ScrollView>
+        </ContentPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

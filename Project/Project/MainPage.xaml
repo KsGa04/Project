@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.MainPage"
+             Title="Главная страница">
+
+    <ScrollView BackgroundColor="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Label Text="Кухня" FontSize="35" FontAttributes="Bold" TextColor="#FF7800" Grid.Row="0" Margin="0,20,0,0" HorizontalOptions="Center"/>
+            <Image Source="https://kartinkin.net/uploads/posts/2021-08/1629834094_11-kartinkin-com-p-blyuda-gordona-ramzi-yeda-krasivo-foto-12.jpg" Grid.Row="1" Margin="20" HeightRequest="400"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" Grid.Row="0" TextColor="Black" Margin="0,30,0,0" Text="Вкусно / быстро"/>
+                <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" Grid.Row="1" TextColor="Black" Margin="30,0,30,0">“Знать о еде человек должен не меньше, чем о математике или о своём родном языке”</Label>
+                <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" Grid.Row="2" TextColor="Black" Margin="30,0,30,0" Text="Гордон Рамзи, знаменитый британский шеф-повар">
+                </Label>
+            </Grid>
+            <Button Text="Перейти к источнику" Grid.Row="3" Margin="50,0,50,20" BackgroundColor="#ffe6a5" BorderColor="Black" BorderWidth="2" TextColor="Black" VerticalOptions="Center"/>
+            <StackLayout BackgroundColor="#FFDAB9" Grid.Row="4">
+                <Label Text="Найти рецепт" FontSize="25" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" Margin="0,30,0,0"/>
+                <Entry Text="Что ты хочешь приготовить?" TextColor="#515151" BackgroundColor="White" HorizontalOptions="Center" Margin="30" WidthRequest="400" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

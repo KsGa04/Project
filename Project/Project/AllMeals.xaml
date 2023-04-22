@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.AllMeals">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="backBtn" Margin="120,10" Text="Назад"/>
+            <Label x:Name="stackLabel"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
