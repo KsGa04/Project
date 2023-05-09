@@ -2,22 +2,46 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.Index"
-       xmlns:local="clr-namespace:Project">
+       xmlns:local="clr-namespace:Project" Shell.BackgroundColor="#FFE6A5">
 
-    <ShellItem>
-        <ShellContent ContentTemplate="{DataTemplate local:Authorization}"/>
-    </ShellItem>
-    <FlyoutItem Title="user" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems" >
+   <ShellContent ContentTemplate="{DataTemplate local:Authorization}"/> 
+
+  <!-- <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">#FFE6A5</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light=White, Dark=Black}" />
+                <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light=Black, Dark=White}" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#FFE6A5"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>  
+
+    <Shell.FlyoutHeader>
+        <local:IndexHeader/>
+    </Shell.FlyoutHeader> -->
+
+    <FlyoutItem Title="user" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Главная страница" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
         <ShellContent Title="Личный кабинет" ContentTemplate="{DataTemplate local:PrivateAccount}"/>
-        <ShellContent Title="Каталог блюд" />
+        <ShellContent Title="Каталог блюд" ContentTemplate="{DataTemplate local:CatalogCook}"/>
         <ShellContent Title="Мои рецепты" />
         <ShellContent Title="Выйти" ContentTemplate="{DataTemplate local:Authorization}"/>
     </FlyoutItem>
+    
     <FlyoutItem Title="admin" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Добавить категорию" ContentTemplate="{DataTemplate local:AddCategories}" Route="AddCategories"/>
         <ShellContent Title="Добавить блюдо" ContentTemplate="{DataTemplate local:AddMeals}"/>
-        <ShellContent Title="Добавить модератора" ContentTemplate="{DataTemplate local:AddModerator}"/>
+        <ShellContent Title="Добавить модератора"/>
         <ShellContent Title="Выйти" ContentTemplate="{DataTemplate local:Authorization}"/>
     </FlyoutItem>
+
+   
 </Shell>

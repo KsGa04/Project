@@ -13,6 +13,7 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PrivateAccount : ContentPage
     {
+        public int Id;
         public PrivateAccount()
         {
             InitializeComponent();
@@ -20,13 +21,21 @@ namespace Project
             // съемка фото 
 
             takePhotoBtn.Clicked += TakePhotoAsync;
-            object name = "";
-            object password = "";
-            App.Current.Properties.TryGetValue("mail", out name);
-            App.Current.Properties.TryGetValue("pass", out password);
-            post.Text = (string)name;
-            pass.Text = (string)password;
-            
+            //object name = "";
+            //object password = "";
+            //App.Current.Properties.TryGetValue("mail", out name);
+            //App.Current.Properties.TryGetValue("pass", out password);
+            //post.Text = (string)name;
+            //pass.Text = (string)password;
+            Id = App.CurrentUser.CurrentUserId;
+            using (CookingBookContext db = new CookingBookContext())
+            {
+                User user = db.Users.FirstOrDefault(x => x.UserId == Id);
+                nik.Text = user.NikName;
+                post.Text = user.Mail;
+                pass.Text = user.Password;
+                datebirth.Date = (DateTime)user.DateOfBirth;
+            }
 
         }
         async void GetPhotoAsync(object sender, EventArgs e)

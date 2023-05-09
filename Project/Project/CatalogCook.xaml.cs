@@ -12,36 +12,26 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CatalogCook : ContentPage
     {
+        string dbPath;
         public CatalogCook()
         {
             Title = "CatalogBook";
             InitializeComponent();
-            forwardBtn.Clicked += GoToForward;
-            backBtn.Clicked += GoToBack;
-            Content = new StackLayout { Children = { forwardBtn, backBtn, stackLabel } };
+            dbPath = DependencyService.Get<IPath>().GetDatabasePath(App.DBFILENAME);
+            FillMain();
         }
-        protected internal void DisplayStack()
+        public void FillMain()
         {
-            NavigationPage navPage = (NavigationPage)App.Current.MainPage;
-            stackLabel.Text = "";
-            foreach (Page p in navPage.Navigation.NavigationStack)
+            MainPlace.Children.Clear();
+            using (CookingBookContext db = new CookingBookContext(dbPath))
             {
-                stackLabel.Text += p.Title + "\n";
+                foreach (var category in db.Categories)
+                {
+                    CategoryBlock block = new CategoryBlock(category);
+                    MainPlace.Children.Add(block);
+                }
             }
-        }
-        private async void GoToForward(object sender, EventArgs e)
-        {
-            AllMeals page = new AllMeals();
-            await Navigation.PushAsync(page);
-            page.DisplayStack();
-        }
 
-        // Переход обратно на MainPage 
-        private async void GoToBack(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-            NavigationPage navPage = (NavigationPage)App.Current.MainPage;
-            ((MainPage)navPage.CurrentPage).DisplayStack();
         }
     }
 }

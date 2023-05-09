@@ -13,10 +13,13 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCategories : ContentPage
     {
+        string dbPath;
+        byte[] cookPhoto;
         public AddCategories()
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
+            dbPath = DependencyService.Get<IPath>().GetDatabasePath(App.DBFILENAME);
             // выбор фото 
             getPhotoBtn.Clicked += GetPhotoAsync;
             // съемка фото 
@@ -27,14 +30,15 @@ namespace Project
         {
             try
             {
-                // выбираем фото 
-                var photo = await MediaPicker.PickPhotoAsync();
-                // загружаем в ImageView 
+                // выбираем фото
+                var photo = await Xamarin.Essentials.MediaPicker.PickPhotoAsync();
+                // загружаем в ImageView
                 img.Source = ImageSource.FromFile(photo.FullPath);
+                cookPhoto = File.ReadAllBytes(photo.FullPath);
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+                await DisplayAlert("Да", ex.Message, "OK");
             }
         }
         async void TakePhotoAsync(object sender, EventArgs e)
@@ -52,10 +56,29 @@ namespace Project
                     await stream.CopyToAsync(newStream);
                 // загружаем в ImageView 
                 img.Source = ImageSource.FromFile(photo.FullPath);
+                cookPhoto = File.ReadAllBytes(photo.FullPath);
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+            }
+        }
+
+        private void Save_Clicked(object sender, EventArgs e)
+        {
+            if (Name.Text == "" ||  img.Source == null)
+            {
+                DisplayAlert("Ошибка", "Заполните все поля", "Ок");
+            }
+            else
+            {
+                using (CookingBookContext db = new CookingBookContext(dbPath))
+                {
+                    db.Categories.Add(new Category { ImageCategory = cookPhoto, NameCategory = Name.Text });
+                    db.SaveChanges();
+                }
+                DisplayAlert("Успешно", "Успешное добавление категории", "Ок");
+
             }
         }
     }

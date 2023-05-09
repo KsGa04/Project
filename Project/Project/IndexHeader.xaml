@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.IndexHeader" HeightRequest="170">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Background="#FFE6A5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="End" Text="Кухня" FontSize="20"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

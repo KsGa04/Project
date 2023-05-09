@@ -3,9 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Project.AllMeals">
     <ContentPage.Content>
-        <StackLayout>
-            <Button x:Name="backBtn" Margin="120,10" Text="Назад"/>
-            <Label x:Name="stackLabel"/>
+        <StackLayout Orientation="Vertical" Spacing="0" Background="#FFE6A5">
+            <!--      <StackLayout Orientation="Horizontal" BackgroundColor="#212121">
+                <Picker BackgroundColor="#313131" TextColor="White" Margin="0"/>
+                <SearchBar Placeholder="Название категории" TextColor="White" BackgroundColor="#313131" x:Name="CategoryList"/>
+            </StackLayout> -->
+            <ScrollView>
+                <FlexLayout Direction="Row" x:Name="MainPlace" Wrap="Wrap">
+
+                </FlexLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

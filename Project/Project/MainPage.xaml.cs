@@ -16,24 +16,24 @@ namespace Project
             InitializeComponent();
             
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            if (loaded == false)
-            {
-                DisplayStack();
-                loaded = true;
-            }
-        }
-        protected internal void DisplayStack()
-        {
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    if (loaded == false)
+        //    {
+        //        DisplayStack();
+        //        loaded = true;
+        //    }
+        //}
+        //protected internal void DisplayStack()
+        //{
 
-        }
-        private async void GoToForward(object sender, EventArgs e)
-        {
-            CatalogCook page = new CatalogCook();
-            await Navigation.PushAsync(page);
-            page.DisplayStack();
-        }
+        //}
+        //private async void GoToForward(object sender, EventArgs e)
+        //{
+        //    CatalogCook page = new CatalogCook();
+        //    await Navigation.PushAsync(page);
+        //    page.DisplayStack();
+        //}
     }
 }

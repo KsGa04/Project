@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.MealBlock" Padding="1" Margin="12" WidthRequest="250" HeightRequest="330">
+    <StackLayout Orientation="Vertical" BackgroundColor="#FFE6A5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" x:Name="MealImage" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="260">
+                <!--          <Image.GestureRecognizers>
+                    <TapGestureRecognizer/>
+                </Image.GestureRecognizers> -->
+            </Image>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="5, 0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_ToGame"/>
+                </StackLayout.GestureRecognizers>
+                <StackLayout VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                    <Label TextColor="White" FontSize="16" x:Name="MealName" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</Frame>

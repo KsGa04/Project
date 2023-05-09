@@ -40,11 +40,11 @@
             <Button x:Name="getPhotoBtn" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Text="Вставить фото" Style="{StaticResource buttonStyle}" Margin="0,0,20,0"/>
             <Label Text="Ник-нейм" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="2" Style="{StaticResource frameStyle}">
-                <Entry />
+                <Entry x:Name="nik" />
             </Frame>
             <Label Text="Дата рождения" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="3" Style="{StaticResource frameStyle}">
-                <DatePicker Format="D" TextColor="Black">
+                <DatePicker Format="D" TextColor="Black" x:Name="datebirth">
                     <DatePicker.MinimumDate>1/01/1970</DatePicker.MinimumDate>
                     <DatePicker.MaximumDate>1/01/2006</DatePicker.MaximumDate>
                 </DatePicker>

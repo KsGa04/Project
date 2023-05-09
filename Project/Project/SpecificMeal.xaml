@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project.AddCategories">
+             x:Class="Project.SpecificMeal">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="buttonStyle" TargetType="Button">
@@ -26,20 +26,17 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="350"/>
                 <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="370"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Frame Grid.Row="0" Style="{StaticResource frameStyle}" WidthRequest="300">
                 <Image Grid.Row="0" x:Name="img" HeightRequest="300" WidthRequest="300" Margin="5"/>
             </Frame>
-            <Button x:Name="takePhotoBtn" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Text="Сделать фото" Style="{StaticResource buttonStyle}" Margin="20,0,0,0"/>
-            <Button x:Name="getPhotoBtn" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Text="Вставить фото" Style="{StaticResource buttonStyle}" Margin="0,0,20,0"/>
-            <Label Text="Название категории" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
-            <Frame Grid.Row="2" Style="{StaticResource frameStyle}">
-                <Entry x:Name="Name"/>
-            </Frame>
-            <Button Text="Сохранить" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource buttonStyle}" WidthRequest="300" x:Name="Save" Clicked="Save_Clicked"/>
+            <Label x:Name="Name" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Label x:Name="Desc" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Label Text="Категория блюда" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
         </Grid>
     </ScrollView>
 </ContentPage>

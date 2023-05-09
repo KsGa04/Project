@@ -12,15 +12,30 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registration : ContentPage
     {
+        string dbPath;
         public Registration()
         {
             InitializeComponent();
+            dbPath = DependencyService.Get<IPath>().GetDatabasePath(App.DBFILENAME);
         }
-        private void reg_Clicked(object sender, EventArgs e)
+        private async void reg_Clicked(object sender, EventArgs e)
         {
-            App.Current.Properties.Add("mail", mail.Text);
-            App.Current.Properties.Add("pass", pass.Text);
-            Navigation.PushAsync(new Authorization());
+            using (CookingBookContext db = new CookingBookContext(dbPath))
+            {
+                if (db.Users.Where(x => x.Mail == mail.Text).Any() || db.Users.Where(x => x.Password == pass.Text).Any())
+                {
+                    await DisplayAlert("Ошибка", "Такой пользователь уже зарегестрирован", "OK");
+                }
+                else
+                {
+                    User client = new User();
+                    client.Mail = mail.Text;
+                    client.Password = pass.Text;
+                    db.Add(client);
+                    db.SaveChanges();
+                    await Navigation.PushAsync(new Authorization());
+                }
+            }
         }
 
         
