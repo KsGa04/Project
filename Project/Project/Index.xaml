@@ -39,7 +39,8 @@
     <FlyoutItem Title="admin" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Добавить категорию" ContentTemplate="{DataTemplate local:AddCategories}" Route="AddCategories"/>
         <ShellContent Title="Добавить блюдо" ContentTemplate="{DataTemplate local:AddMeals}"/>
-        <ShellContent Title="Добавить модератора"/>
+        <ShellContent Title="Добавить модератора" ContentTemplate="{DataTemplate local:AddModerator}"/>
+        <ShellContent Title="Просмотр Модераторов" ContentTemplate="{DataTemplate local:ListModerators}"/>
         <ShellContent Title="Выйти" ContentTemplate="{DataTemplate local:Authorization}"/>
     </FlyoutItem>
 

@@ -18,7 +18,7 @@ namespace Project
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             dbPath = DependencyService.Get<IPath>().GetDatabasePath(App.DBFILENAME);
-
+                App.CurrentUser.CurrentUserId = 0;
 
         }
 

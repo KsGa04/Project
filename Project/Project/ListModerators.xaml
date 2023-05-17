@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.ListModerators">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <!--      <StackLayout Orientation="Horizontal" BackgroundColor="#212121">
+                <Picker BackgroundColor="#313131" TextColor="White" Margin="0"/>
+                <SearchBar Placeholder="Название категории" TextColor="White" BackgroundColor="#313131" x:Name="CategoryList"/>
+            </StackLayout> -->
+            <ScrollView>
+                <FlexLayout Direction="Row" x:Name="MainPlace" Wrap="Wrap">
+
+                </FlexLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

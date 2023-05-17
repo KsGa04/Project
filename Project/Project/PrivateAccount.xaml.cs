@@ -13,65 +13,83 @@ namespace Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PrivateAccount : ContentPage
     {
-        public int Id;
+        int Id;
+        string dbPath;
         public PrivateAccount()
         {
             InitializeComponent();
-            getPhotoBtn.Clicked += GetPhotoAsync;
-            // съемка фото 
+            dbPath = DependencyService.Get<IPath>().GetDatabasePath(App.DBFILENAME);
+            //getPhotoBtn.Clicked += GetPhotoAsync;
 
-            takePhotoBtn.Clicked += TakePhotoAsync;
-            //object name = "";
-            //object password = "";
-            //App.Current.Properties.TryGetValue("mail", out name);
-            //App.Current.Properties.TryGetValue("pass", out password);
-            //post.Text = (string)name;
-            //pass.Text = (string)password;
-            Id = App.CurrentUser.CurrentUserId;
-            using (CookingBookContext db = new CookingBookContext())
+            //takePhotoBtn.Clicked += TakePhotoAsync;
+            
+            using (CookingBookContext db = new CookingBookContext(dbPath))
             {
-                User user = db.Users.FirstOrDefault(x => x.UserId == Id);
+                
+
+                User user = db.Users.FirstOrDefault(x => x.UserId == App.CurrentUser.CurrentUserId);
                 nik.Text = user.NikName;
                 post.Text = user.Mail;
                 pass.Text = user.Password;
-                datebirth.Date = (DateTime)user.DateOfBirth;
+                if (user.DateOfBirth != null)
+                {
+                    datebirth.Date = (DateTime)user.DateOfBirth;
+                }
             }
 
         }
-        async void GetPhotoAsync(object sender, EventArgs e)
+        //async void GetPhotoAsync(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        // выбираем фото 
+        //        var photo = await MediaPicker.PickPhotoAsync();
+        //        // загружаем в ImageView 
+        //        img.Source = ImageSource.FromFile(photo.FullPath);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+        //    }
+        //}
+        //async void TakePhotoAsync(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        var photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
+        //        {
+        //            Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
+        //        });
+        //        // для примера сохраняем файл в локальном хранилище 
+        //        var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
+        //        using (var stream = await photo.OpenReadAsync())
+        //        using (var newStream = File.OpenWrite(newFile))
+        //            await stream.CopyToAsync(newStream);
+        //        // загружаем в ImageView 
+        //        img.Source = ImageSource.FromFile(photo.FullPath);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
+        //    }
+        //}
+
+        private void Save_Clicked(object sender, EventArgs e)
         {
-            try
+            using (CookingBookContext db = new CookingBookContext(dbPath))
             {
-                // выбираем фото 
-                var photo = await MediaPicker.PickPhotoAsync();
-                // загружаем в ImageView 
-                img.Source = ImageSource.FromFile(photo.FullPath);
+                User user = db.Users.FirstOrDefault(x => x.UserId == App.CurrentUser.CurrentUserId);
+                user.NikName = nik.Text;
+                user.Mail = post.Text;
+                user.Password = pass.Text;
+                user.DateOfBirth = datebirth.Date;
             }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
-            }
+            DisplayAlert("Успешно", "Успешное изменение данных", "Ок");
         }
-        async void TakePhotoAsync(object sender, EventArgs e)
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            try
-            {
-                var photo = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
-                {
-                    Title = $"xamarin.{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.png"
-                });
-                // для примера сохраняем файл в локальном хранилище 
-                var newFile = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-                using (var stream = await photo.OpenReadAsync())
-                using (var newStream = File.OpenWrite(newFile))
-                    await stream.CopyToAsync(newStream);
-                // загружаем в ImageView 
-                img.Source = ImageSource.FromFile(photo.FullPath);
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Сообщение об ошибке", ex.Message, "OK");
-            }
+            await Navigation.PushModalAsync(new AddRecipe());
         }
     }
 }

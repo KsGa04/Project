@@ -24,7 +24,6 @@
     <ScrollView BackgroundColor="White">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="220"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="150"/>
@@ -33,33 +32,38 @@
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Frame CornerRadius="100" Grid.Row="0" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" BackgroundColor="Wheat">
+            <Label Text="Личный кабинет" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Center" FontSize="25" Grid.Row="0"/>
+            <!--        <Frame CornerRadius="100" Grid.Row="0" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" BackgroundColor="Wheat">
                 <Image  x:Name="img" Aspect="AspectFill"/>
             </Frame>
             <Button x:Name="takePhotoBtn" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Text="Сделать фото" Style="{StaticResource buttonStyle}" Margin="20,0,0,0"/>
-            <Button x:Name="getPhotoBtn" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Text="Вставить фото" Style="{StaticResource buttonStyle}" Margin="0,0,20,0"/>
-            <Label Text="Ник-нейм" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Button x:Name="getPhotoBtn" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Text="Вставить фото" Style="{StaticResource buttonStyle}" Margin="0,0,20,0"/> -->
+            <Label Text="Ник-нейм" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="2" Style="{StaticResource frameStyle}">
-                <Entry x:Name="nik" />
+                <Entry x:Name="nik" TextColor="Black"/>
             </Frame>
-            <Label Text="Дата рождения" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Label Text="Дата рождения" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="3" Style="{StaticResource frameStyle}">
                 <DatePicker Format="D" TextColor="Black" x:Name="datebirth">
                     <DatePicker.MinimumDate>1/01/1970</DatePicker.MinimumDate>
                     <DatePicker.MaximumDate>1/01/2006</DatePicker.MaximumDate>
                 </DatePicker>
             </Frame>
-            <Label Text="Почта" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Label Text="Почта" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="4" Style="{StaticResource frameStyle}">
                 <Entry x:Name="post" TextColor="Black"/>
             </Frame>
-            <Label Text="Пароль" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
+            <Label Text="Пароль" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Start" TextColor="Black" FontSize="20"/>
             <Frame Grid.Row="5" Style="{StaticResource frameStyle}">
                 <Entry IsPassword="False" TextColor="Black" x:Name="pass"/>
             </Frame>
-            <Button Text="Сохранить" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource buttonStyle}" WidthRequest="300"/>
+            <Button Text="Сохранить" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource buttonStyle}" WidthRequest="300" x:Name="Save" Clicked="Save_Clicked"/>
             <Image Source="https://3.404content.com/1/76/B8/1138265597082862982/fullsize.jpg" Grid.Row="7" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-            <Label Text="Добавить рецепт" BackgroundColor="White" Opacity="0.9" TextColor="Black" FontSize="20" VerticalOptions="Center" Grid.Row="7" HorizontalOptions="FillAndExpand" Padding="60" HorizontalTextAlignment="Center"/>
+            <Label Text="Добавить рецепт" BackgroundColor="White" Opacity="0.9" TextColor="Black" FontSize="20" VerticalOptions="Center" Grid.Row="7" HorizontalOptions="FillAndExpand" Padding="60" HorizontalTextAlignment="Center" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </ScrollView>
 </ContentPage>

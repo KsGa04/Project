@@ -84,7 +84,7 @@ namespace Project
                     db.Meals.Add(new Meal { ImageMeal = cookPhoto, NameMeal = Name.Text, DescriptionMeal = Description.Text, CategoryId = Categ.SelectedIndex + 1 });
                     db.SaveChanges();
                 }
-                DisplayAlert("Успешно", "Успешное добавление категории", "Ок");
+                DisplayAlert("Успешно", "Успешное добавление блюда", "Ок");
 
             }
         }

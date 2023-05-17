@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Project.SpecificMeal">
+             x:Class="Project.NewRecipe">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="buttonStyle" TargetType="Button">
@@ -27,26 +27,32 @@
                 <RowDefinition Height="350"/>
                 <RowDefinition Height="150"/>
                 <RowDefinition Height="370"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="570"/>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="400"/>
             </Grid.RowDefinitions>
             <Frame Grid.Row="0" Style="{StaticResource frameStyle}" WidthRequest="300">
                 <Image Grid.Row="0" x:Name="img" HeightRequest="300" WidthRequest="300" Margin="5"/>
             </Frame>
             <Label x:Name="Name" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="20"/>
-            <Label x:Name="Desc" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="StartAndExpand" TextColor="Black" FontSize="20" />
-            <Button x:Name="AddRecipe" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="Добавить рецепт" TextColor="Black" FontSize="20" Background="#ffde89" BorderColor="Black" BorderWidth="2" Clicked="AddRecipe_Clicked"/>
-            <ListView x:Name="recipeList" ItemsSource="{Binding}" ItemSelected="recipeList_ItemSelected" >
+            <Label x:Name="Ingr" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="StartAndExpand" TextColor="Black" FontSize="20" />
+            <Label x:Name="Desc" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="StartAndExpand" TextColor="Black" FontSize="20" />
+            <Label Grid.Row="4" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="Комментарии" TextColor="Black" FontSize="20"/>
+            <Frame Grid.Row="4" Style="{StaticResource frameStyle}" WidthRequest="300">
+                <Entry x:Name="AddComment" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Text="Оставьте комментарий" TextColor="Black" />
+            </Frame>
+            <ListView x:Name="commentList" ItemsSource="{Binding}" ItemSelected="recipeList_ItemSelected" VerticalScrollBarVisibility="Default">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
                                 <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="150" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding ImageRecipe}"  HorizontalOptions="Center" WidthRequest="60" HeightRequest="60" Grid.Column="0"/>
-                                    <Label Text="{Binding NameRecipe}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" />
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding NameComment}" HorizontalOptions="Center" Grid.Row="0" Width="283"/>
+                                    <Label Text="{Binding DateComement}" HorizontalOptions="EndAndExpand" Grid.Row="1"/>
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>

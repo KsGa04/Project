@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.BlockModerator" Padding="1" Margin="12" WidthRequest="300" HeightRequest="300">
+    <StackLayout Orientation="Vertical">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_ToGame"/>
+                <SwipeGestureRecognizer Swiped="SwipeGestureRecognizer_Swiped" Direction="Left"/>
+            </Grid.GestureRecognizers>
+            <Label x:Name="IdModer" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="0" TextColor="Black"/>
+            <Label x:Name="Post" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="1" TextColor="Black"/>
+            <Label x:Name="Pass" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="2" TextColor="Black"/>
+            <Label x:Name="Nik" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="3" TextColor="Black"/>
+            <Label x:Name="Data" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="4" TextColor="Black"/>
+            <Label x:Name="IdCategory" FontSize="16" HorizontalOptions="CenterAndExpand" Grid.Row="5" TextColor="Black"/>
+        </Grid>
+    </StackLayout>
+</Frame>

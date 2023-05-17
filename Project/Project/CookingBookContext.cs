@@ -31,6 +31,7 @@ namespace Project
         public CookingBookContext(string databasePath)
         {
             _databasePath = databasePath;
+            
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
